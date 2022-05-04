@@ -99,8 +99,8 @@ function oneRound(playerSelection, computerSelection) {
             roundResult.textContent = "That was a tie!";
         }
 
-        changeImageCPU(playerSelection);
-        changeImagePlayer(computerSelection);
+        changeImageCPU(computerSelection);
+        changeImagePlayer(playerSelection);
 
         let playerScoreDisplay = document.querySelector("#player-score");
         playerScoreDisplay.textContent = playerScore;
