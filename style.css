@@ -1,0 +1,51 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 35px;
+  background-color: #59656F;
+  color: white;
+  padding: 30px;
+}
+
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  gap: 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-img {
+  font-size: 100px;
+}
+
+.decision-board {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.decision-button {
+  font-size: 100px;
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+

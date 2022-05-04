@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Rock Paper Scissors Game!</title>
-    <script src="script.js" defer></script>
-</head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 <body>
-  <button id="button-rock">ROCK</button>
-  <button id="button-paper">PAPER</button>
-  <button id="button-scissors">SCISSORS</button>
-  <div id="round-result"></div>
-  <div id="actual-score"></div>
-  <div id="match-result"></div>
-  
+  <div class="header">ROCK PAPER SCISSORS GAME</div>
+  <div class="display">
+    <div class="card">
+      <div class="card-decision">You chose:</div>
+      <div class="card-img" id="player-img"></div>
+    </div>
+    <div class="card">
+      <div class="card-decision">Computer chose:</div>
+      <div class="card-img" id="cpu-img"></div>
+    </div>
+  </div>
+    <div class="round-winner"></div>
+    <div class="score-display">
+      <div class="score-header">MATCH SCORE:</div>
+      <div class="score"><span id="player-score"></span><span>X</span><span id="cpu-score"></span></div>  
+    </div>
+  <div class="decision-board">
+    <button class="decision-button" id="rock">✊</button>
+    <button class="decision-button" id="paper">✋</button>
+    <button class="decision-button" id="scissors">✌</button>
+  </div>
 </body>
 </html>
