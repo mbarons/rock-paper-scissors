@@ -1,5 +1,13 @@
 let computerScore = 0;
 let playerScore = 0;
+let winnerMessage = document.querySelector(".final-message");;
+let roundResult = document.querySelector(".round-winner");
+let playerImage = document.querySelector("#player-img");
+let cpuImage = document.querySelector("#cpu-img");
+let resetButton = document.createElement("button");
+let resetContainer = document.querySelector(".reset-button-container");
+let playerScoreDisplay = document.querySelector("#player-score");
+let cpuScoreDisplay = document.querySelector("#cpu-score");
 
 const btnRock = document.querySelector("#rock");
 const btnPaper = document.querySelector("#paper");
@@ -8,9 +16,26 @@ const btnScissors = document.querySelector("#scissors");
 btnRock.addEventListener("click", () => startGame("rock"));
 btnPaper.addEventListener("click", () => startGame("paper"));
 btnScissors.addEventListener("click", () => startGame("scissors"));
+resetButton.addEventListener("click", () => reset());
+
+function createReset() {
+    resetButton.innerHTML = "Play Again";
+    resetContainer.appendChild(resetButton);
+}
+
+function reset() {
+    computerScore = 0;
+    playerScore = 0;
+    roundResult.textContent = "";
+    winnerMessage.textContent = "";
+    playerImage.textContent = "";
+    cpuImage.textContent = "";
+    cpuScoreDisplay.textContent = 0;
+    playerScoreDisplay.textContent = 0;
+    resetContainer.removeChild(resetButton);
+}
 
 function changeImagePlayer(decision) {
-    let playerImage = document.querySelector("#player-img");
     if (decision == "rock") {
         playerImage.textContent = "✊";
     }
@@ -23,23 +48,16 @@ function changeImagePlayer(decision) {
 };
 
 function changeImageCPU(decision) {
-    let playerImage = document.querySelector("#cpu-img");
     if (decision == "rock") {
-        playerImage.textContent = "✊";
+        cpuImage.textContent = "✊";
     }
     else if (decision == "paper") {
-        playerImage.textContent = "✋";
+        cpuImage.textContent = "✋";
     }
     else {
-        playerImage.textContent = "✌";
+        cpuImage.textContent = "✌";
     };
 };
-
-
-function startGame(playerDecision){
-    let computerDecision = computerPlay();
-    oneRound(playerDecision, computerDecision);
-}
 
 function computerPlay(){
     let randomNumber = Math.floor(Math.random()*3) + 1;
@@ -88,7 +106,6 @@ function oneRound(playerSelection, computerSelection) {
         else if (roundWinner == "player") {
             playerScore++;
         }
-        let roundResult = document.querySelector(".round-winner");
         if (roundWinner == "player") {
             roundResult.textContent = "You won this round!";
         }
@@ -101,29 +118,22 @@ function oneRound(playerSelection, computerSelection) {
 
         changeImageCPU(computerSelection);
         changeImagePlayer(playerSelection);
-
-        let playerScoreDisplay = document.querySelector("#player-score");
         playerScoreDisplay.textContent = playerScore;
-
-        let cpuScoreDisplay = document.querySelector("#cpu-score");
         cpuScoreDisplay.textContent = computerScore;
 
-    }}
-        /*actualScore = document.querySelector("#actual-score");
-        actualScore.textContent = `Score:\nPlayer: ${playerScore}\nComputer: ${computerScore}`;
-
-        matchResult = document.querySelector("#match-result");
-
-        if (playerScore == 5) {
-            matchResult.textContent = "Congratz! You won the game!"
+        if (computerScore == 5) {
+        
+            winnerMessage.textContent = "GAME OVER! The computer beat you.";
+            createReset();
         }
-        else if (computerScore == 5) {
-            matchResult.textContent = "Game Over! The computer beat you!"
-            }
+        else if (playerScore == 5) {
+            winnerMessage.textContent = "CONGRATULATIONS! You won the game!";
+            createReset();
         }
-    else return
-    };
+    }
+}
 
-
-
-*/
+function startGame(playerDecision){
+    let computerDecision = computerPlay();
+    oneRound(playerDecision, computerDecision);
+}
